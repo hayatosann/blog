@@ -1,0 +1,37 @@
+<nav class="green lighten-1">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">日記</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "戻る","/tweets", method: :get %></li>
+      <% else %>
+        <li><%= link_to "え、くんの？","/users/sign_in", method: :get %></li>
+        <li><%= link_to "アカウント欲しい？",new_user_registration_path, method: :get %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<div class="contents row">
+<h3>
+      編集しよう
+</h3>
+<%= form_for @tweet, url: tweet_path(params[:id]) do |f| %>
+
+ 
+
+  <div class="field">
+    <%= f.label :text, "思ったこと" %>
+    <%= f.text_field :text %>
+  </div>
+
+    <div class="field">
+    <%= f.label :submit, "編集する" %>
+    <%= f.submit "編集"%>
+   </div>
+  </div>
+  
+  
+<% end %>
+</div>

@@ -1,0 +1,19 @@
+
+<nav class="green lighten-1">
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">日記</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if user_signed_in? %>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "書く","/tweets/new", method: :get %></li>
+      <% else %>
+        <li><%= link_to "ろぐいん","/users/sign_in", method: :get %></li>
+        <li><%= link_to "作る",new_user_registration_path, method: :get %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+  
+ <%=render :partial => "tweet" %>
+<script type="text/javascript" src="./app.js"></script>
+
